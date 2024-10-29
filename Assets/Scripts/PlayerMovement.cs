@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] float rotationSpeed;
+
     [SerializeField] Transform center;
     [SerializeField] float radius;
     [SerializeField] float speed;
     [SerializeField] float angle;
     private bool direction;
 
-    //ROTAR JUGADOR
+
 
     void Update()
     {
         circularMovement();
+        Rotate();
         ChangeDirection();
     }
 
@@ -49,5 +52,11 @@ public class PlayerMovement : MonoBehaviour
         {
             direction = !direction;
         }
+    }
+
+
+    private void Rotate()
+    {
+        gameObject.transform.Rotate(0, 0, rotationSpeed); //LOOK AT
     }
 }

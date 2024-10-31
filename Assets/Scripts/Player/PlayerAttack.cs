@@ -3,9 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttack : ShootBullet
+public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] Transform bulletSpawn;
+
+    [SerializeField] protected GameObject bulletPrefab;
+    [SerializeField] protected float shotCooldown;
+    [SerializeField] protected float shotInitialTime;
+
 
     private void Start()
     {
@@ -14,7 +19,6 @@ public class PlayerAttack : ShootBullet
 
     private void ShotOneBullet()
     {
-        Shot(transform.up, bulletSpawn, transform.rotation);
+        Instantiate(bulletPrefab, bulletSpawn.position, transform.rotation);
     }
-    
 }

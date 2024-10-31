@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         circularMovement();
-        Rotate();
         ChangeDirection();
     }
 
@@ -52,11 +51,5 @@ public class PlayerMovement : MonoBehaviour
         {
             direction = !direction;
         }
-    }
-
-
-    private void Rotate()
-    {
-        gameObject.transform.Rotate(0, 0, rotationSpeed); //LOOK AT
     }
 }

@@ -18,7 +18,7 @@ public class PlayersBullet : MonoBehaviour
 
     private void FixedUpdate()
     {
-        ChaseTarget();
+        if (target != null) { ChaseTarget(); } 
     }
 
     private void ChaseTarget()

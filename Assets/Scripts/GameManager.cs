@@ -41,8 +41,5 @@ public class GameManager : MonoBehaviour
         panel.SetActive(true);
     }
 
-    public void ChangeScene(int sceneNumber)
-    {
-        SceneManager.LoadScene(sceneNumber);
-    }
+
 }

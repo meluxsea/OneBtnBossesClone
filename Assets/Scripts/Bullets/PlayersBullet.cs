@@ -2,19 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayersBullet : Bullet
+public class PlayersBullet : MonoBehaviour
 {
     [SerializeField] float rotationSpeed;
-    private Transform target;
+    [SerializeField] float bulletSpeed;
+    [SerializeField] Rigidbody2D _rb;
+    Transform target;
 
 
-    void Start()
+    void Awake()
     {
         target = GameObject.FindGameObjectWithTag("Enemy").transform;
     }
 
 
     private void FixedUpdate()
+    {
+        ChaseTarget();
+    }
+
+    private void ChaseTarget()
     {
         Vector2 targetPosition = transform.position - target.position;
         targetPosition.Normalize();

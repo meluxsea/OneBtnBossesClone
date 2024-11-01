@@ -1,12 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class EnemyHealth : Health
+public class PlayerHealth : Health
 {
     protected override void HealthIsZero()
     {
-        Destroy(gameObject);
-        manager.activatePanel(manager.victoryPanel);
+        manager.activatePanel(manager.gameOverPanel);
     }
 }
+

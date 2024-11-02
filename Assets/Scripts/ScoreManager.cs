@@ -17,19 +17,18 @@ public class ScoreManager : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("SavedHighScore"))
         {
-            //ACTIVAR TEXTO O PANEL DE HIGH SCORE
-
-            if (manager.time > PlayerPrefs.GetFloat("SavedHighScore"))
+            if (manager.time * 10 < PlayerPrefs.GetFloat("SavedHighScore"))
             {
-                PlayerPrefs.SetFloat("SavedHighScore", manager.time);
+                PlayerPrefs.SetFloat("SavedHighScore", manager.time * 10);
+                //ACTIVAR TEXTO O PANEL DE HIGH SCORE
             }
-                
+
         }
         else
         {
-            PlayerPrefs.SetFloat("SavedHighScore", manager.time);
+            PlayerPrefs.SetFloat("SavedHighScore", manager.time * 10);
         }
 
-        highScoreText.text = PlayerPrefs.GetFloat("SavedHighScore").ToString();
+        highScoreText.text = PlayerPrefs.GetFloat("SavedHighScore").ToString("0");
     }
 }

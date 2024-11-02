@@ -6,14 +6,20 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    bool canChangeTime = true;
+
+    [Header("PANELS")]
     [SerializeField] public GameObject gameOverPanel;
     [SerializeField] public GameObject victoryPanel;
+
+    [Header("OTHER SCRIPTS")]
     public ScoreManager scoreManager;
+
+    [Header("TIME")]
+    [SerializeField] GameObject informationPanel;
     [SerializeField] Text textTime;
-    [SerializeField] GameObject informationPanel; 
-    bool canChangeTime = true;
     public float time;
-    
+
 
 
     private void Start()
@@ -22,11 +28,13 @@ public class GameManager : MonoBehaviour
         victoryPanel.SetActive(false);
     }
 
-
     void Update()
     {
         Timer();
     }
+
+
+
 
     private void Timer()
     {
@@ -43,6 +51,7 @@ public class GameManager : MonoBehaviour
         canChangeTime = false;
         panel.SetActive(true);
     }
+
 
     public void Win()
     {

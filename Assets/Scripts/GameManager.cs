@@ -8,9 +8,12 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] public GameObject gameOverPanel;
     [SerializeField] public GameObject victoryPanel;
+    public ScoreManager scoreManager;
     [SerializeField] Text textTime;
+    [SerializeField] GameObject informationPanel; 
     bool canChangeTime = true;
-    float time;
+    public float time;
+    
 
 
     private void Start()
@@ -41,5 +44,12 @@ public class GameManager : MonoBehaviour
         panel.SetActive(true);
     }
 
+    public void Win()
+    {
+        activatePanel(victoryPanel);
+        scoreManager.HighScoreUpdate();
 
+        textTime.text = "TIME                                          " + (time * 10).ToString("0");
+        textTime.transform.SetParent(informationPanel.transform);
+    }
 }

@@ -11,6 +11,7 @@ public class ScoreManager : MonoBehaviour
 
     [Header("BEST SCORE")]
     [SerializeField] Text highScoreText;
+    [SerializeField] GameObject bestTimePanel;
 
 
     public void HighScoreUpdate()
@@ -20,7 +21,7 @@ public class ScoreManager : MonoBehaviour
             if (manager.time * 10 < PlayerPrefs.GetFloat("SavedHighScore"))
             {
                 PlayerPrefs.SetFloat("SavedHighScore", manager.time * 10);
-                //ACTIVAR TEXTO O PANEL DE HIGH SCORE
+                bestTimePanel.SetActive(true);
             }
 
         }

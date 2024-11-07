@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float rotationSpeed;
+    [HideInInspector] public bool canChangeDirection;
 
     [SerializeField] Transform center;
     [SerializeField] float radius;
@@ -14,6 +14,16 @@ public class PlayerMovement : MonoBehaviour
 
 
 
+    private void Start()
+    {
+        if (GameObject.FindAnyObjectByType<SpeedPowerUp>() != null)
+        {
+            Debug.Log("Speed power up is ACTIVE. Player can´t change direction");
+            canChangeDirection = false;
+        }
+        else
+            canChangeDirection = true;
+    }
 
     void Update()
     {
@@ -48,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void ChangeDirection()
     {
-        if (Input.GetKeyDown(KeyCode.A) /*Y SI NO ESTA ACTIVADO EL POWER UP DE VELOCIDAD*/)
+        if (Input.GetKeyDown(KeyCode.A) && canChangeDirection)
         {
             direction = !direction;
         }

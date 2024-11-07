@@ -7,12 +7,14 @@ public abstract class Health : MonoBehaviour
 {
     [SerializeField] protected string bulletTag;
     [SerializeField] protected int health;
+    public bool canTakeDamage = true;
     public GameManager manager;
 
 
     protected void Start()
     {
         manager = FindAnyObjectByType<GameManager>();
+        canTakeDamage = true;
     }
 
 
@@ -32,7 +34,7 @@ public abstract class Health : MonoBehaviour
 
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(bulletTag))
+        if (collision.gameObject.CompareTag(bulletTag) && canTakeDamage)
         {
             TakeDamage();
             Destroy(collision.gameObject);

@@ -6,27 +6,35 @@ using UnityEngine.UI;
 public class SpeedPowerUp : MonoBehaviour
 {
     [SerializeField] Slider powerUpLoad;
-    [SerializeField] int speedBoost;
+    [SerializeField] [Range(0.001f, 0.004f)] float speedBoost;
 
 
     void Start()
     {
         powerUpLoad.maxValue = 100;
         powerUpLoad.minValue = 0;
+
+        powerUpLoad.value = powerUpLoad.maxValue;
     }
 
     
     void Update()
     {
-        powerUpLoad.value += Time.deltaTime;
-
-
         if (Input.GetKey(KeyCode.A))
         {
+            Debug.Log("Presionar tecla");
+
             if (powerUpLoad.value > 0)
             {
+                gameObject.GetComponent<PlayerHealth>().canTakeDamage = false;
                 gameObject.GetComponent<PlayerMovement>().speed = gameObject.GetComponent<PlayerMovement>().speed + speedBoost;
-                powerUpLoad.value -= Time.deltaTime;
+                powerUpLoad.value -= Time.deltaTime * 100;
+            }
+            else
+            {
+                gameObject.GetComponent<PlayerHealth>().canTakeDamage = true;
+                gameObject.GetComponent<PlayerMovement>().speed = 0.001f;
+                powerUpLoad.value += Time.deltaTime * 100; //HACER QUE NO SE PUEDA RECARGAR MIENTRAS SE ESTA USANDO LA HABILIDAD
             }    
         }
 

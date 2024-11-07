@@ -8,9 +8,10 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] Transform center;
     [SerializeField] float radius;
-    [SerializeField] float speed;
     [SerializeField] float angle;
     private bool direction;
+    public float speed;
+
 
 
 
@@ -47,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void ChangeDirection()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) /*Y SI NO ESTA ACTIVADO EL POWER UP DE VELOCIDAD*/)
         {
             direction = !direction;
         }

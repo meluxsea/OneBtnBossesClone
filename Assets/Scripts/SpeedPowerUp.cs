@@ -5,50 +5,60 @@ using UnityEngine.UI;
 
 public class SpeedPowerUp : MonoBehaviour
 {
+    [SerializeField][Range(0.001f, 0.004f)] float speedBoost;
+
     [SerializeField] Slider powerUpLoad;
-    [SerializeField] [Range(0.001f, 0.004f)] float speedBoost;
+
     private float normalSpeed;
+
 
 
     void Start()
     {
         normalSpeed = gameObject.GetComponent<PlayerMovement>().speed;
-
-
-        powerUpLoad.maxValue = 100;
-        powerUpLoad.minValue = 0;
-
-        powerUpLoad.value = powerUpLoad.maxValue;
+        SetSliderValues();
     }
 
-    
     void Update()
+    {
+      PowerUpEffect();
+    }
+
+
+
+    private void PowerUpEffect()
     {
         if (Input.GetKey(KeyCode.A))
         {
-            Debug.Log("Presionar tecla");
-
             if (powerUpLoad.value > 0)
             {
-                gameObject.GetComponent<PlayerHealth>().canTakeDamage = false;
-                gameObject.GetComponent<PlayerMovement>().speed = gameObject.GetComponent<PlayerMovement>().speed + speedBoost;
+                PowerUpState(false, gameObject.GetComponent<PlayerMovement>().speed, speedBoost);
                 powerUpLoad.value -= Time.deltaTime * 100;
             }
             else
             {
-                gameObject.GetComponent<PlayerHealth>().canTakeDamage = true;
-                gameObject.GetComponent<PlayerMovement>().speed = normalSpeed;
-                //powerUpLoad.value += Time.deltaTime * 100; //HACER QUE NO SE PUEDA RECARGAR MIENTRAS SE ESTA USANDO LA HABILIDAD
-            }    
+                PowerUpState(true, normalSpeed, 0);
+            }
         }
         else
         {
-            gameObject.GetComponent<PlayerHealth>().canTakeDamage = true;
-            gameObject.GetComponent<PlayerMovement>().speed = normalSpeed;
+            PowerUpState(true, normalSpeed, 0);
             powerUpLoad.value += Time.deltaTime * 100;
         }
-        
+    }
 
-        //CUANDO SE PRESIONA EL CAMBIO DE DIRECCION, SE ACTIVA EL POWER UP (SE USA EL CARGADOR CUANDO SE MANTIENE LA FLECHA)
+
+    private void PowerUpState(bool playerCanTakeDamage, float speed, float aditionalSpeed)
+    {
+        gameObject.GetComponent<PlayerHealth>().canTakeDamage = playerCanTakeDamage;
+        gameObject.GetComponent<PlayerMovement>().speed = speed + aditionalSpeed;
+    }
+
+
+    private void SetSliderValues()
+    {
+        powerUpLoad.minValue = 0;
+        powerUpLoad.maxValue = 100;
+        powerUpLoad.value = powerUpLoad.maxValue;
     }
 }

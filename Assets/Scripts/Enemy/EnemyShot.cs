@@ -8,6 +8,7 @@ public class EnemyShot : MonoBehaviour
     [SerializeField] Vector2[] bulletDirection;
     [SerializeField] Transform[] bulletSpawn;
     [SerializeField] EnemyBullet bulletPrefab;
+    private int randomNumber = -1;
 
     [Header("TIME")]
     [SerializeField] float initialTime;
@@ -16,25 +17,20 @@ public class EnemyShot : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("ShootBullet", initialTime, shootCoolDown * bulletSpawn.Length);
+        InvokeRepeating("ShootBullet", initialTime, shootCoolDown);
     }
 
 
     private void ShootBullet()
     {
-        for (int i = 0; i < bulletSpawn.Length; i++)
+        randomNumber++;
+
+        if (randomNumber < bulletSpawn.Length)
         {
-            EnemyBullet enemyBullet = Instantiate(bulletPrefab, bulletSpawn[i].position, bulletSpawn[i].rotation);
-            enemyBullet.LaunchBullet(bulletDirection[i]);
-            //StartCoroutine(WaitForShootBullet(i));
+            EnemyBullet enemyBullet = Instantiate(bulletPrefab, bulletSpawn[randomNumber].position, bulletSpawn[randomNumber].rotation);
+            enemyBullet.LaunchBullet(bulletDirection[randomNumber]);
         }
-    }
-
-    private IEnumerator WaitForShootBullet(int j)
-    {
-        EnemyBullet enemyBullet = Instantiate(bulletPrefab, bulletSpawn[j].position, bulletSpawn[j].rotation);
-        enemyBullet.LaunchBullet(bulletDirection[j]);
-
-        yield return new WaitForSeconds(shootCoolDown);
+        else
+            randomNumber = -1;
     }
 }

@@ -301,7 +301,7 @@ GameObject:
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &137493594
 Transform:
   m_ObjectHideFlags: 0
@@ -833,7 +833,7 @@ GameObject:
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &497806340
 Transform:
   m_ObjectHideFlags: 0
@@ -1286,7 +1286,7 @@ GameObject:
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &632475095
 Transform:
   m_ObjectHideFlags: 0
@@ -2933,7 +2933,7 @@ GameObject:
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1093421029
 Transform:
   m_ObjectHideFlags: 0
@@ -3912,6 +3912,7 @@ GameObject:
   - component: {fileID: 1777893651}
   - component: {fileID: 1777893653}
   - component: {fileID: 1777893655}
+  - component: {fileID: 1777893656}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -4047,6 +4048,31 @@ MonoBehaviour:
   health: 100
   canTakeDamage: 0
   manager: {fileID: 0}
+--- !u!114 &1777893656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777893650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19b35d1d9beb18f438c42f793943b46e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletDirection:
+  - {x: 1, y: 0}
+  - {x: -1, y: 0}
+  - {x: 0, y: -1}
+  - {x: 0, y: 1}
+  bulletSpawn:
+  - {fileID: 632475094}
+  - {fileID: 497806339}
+  - {fileID: 1093421028}
+  - {fileID: 137493593}
+  bulletPrefab: {fileID: 5183644925841455421, guid: c6f1604296923264bac8bd9d3deca3f3, type: 3}
+  initialTime: 0
+  shootCoolDown: 1
 --- !u!1 &1784630408
 GameObject:
   m_ObjectHideFlags: 0

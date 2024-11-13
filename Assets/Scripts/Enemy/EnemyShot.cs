@@ -27,7 +27,7 @@ public class EnemyShot : MonoBehaviour
 
         if (randomNumber < bulletSpawn.Length)
         {
-            EnemyBullet enemyBullet = Instantiate(bulletPrefab, bulletSpawn[randomNumber].position, bulletSpawn[randomNumber].rotation);
+            EnemyBullet enemyBullet = Instantiate(bulletPrefab, bulletSpawn[randomNumber].position, bulletSpawn[randomNumber].rotation); 
             enemyBullet.LaunchBullet(bulletDirection[randomNumber]);
         }
         else

@@ -7,41 +7,45 @@ public class EnemyObstacle : MonoBehaviour
 {
     [SerializeField] GameObject centerPosition;
     [SerializeField] GameObject obstaclePrefab;
+    private GameObject obstacle;
     private int randomAngle;
-    
+
+    [Header("COOLDOWN")]
+    [SerializeField] float invokeCooldown;
+
 
 
     void Start()
     {
-        obstaclePrefab.SetActive(false);
-
-        InvokeRepeating("InstantiateObstacle", 1, 1);
+        InvokeRepeating("ObstaclePositionAndState", 1, invokeCooldown + 3+5);
     }
 
-    /*
-    private void InstantiateObstacle()
-    {
-        GameObject obstacle = Instantiate(obstaclePrefab, centerPosition.transform.position, centerPosition.transform.rotation); //USAR SOLO UN PREFAB
-        centerPosition.transform.Rotate(new Vector3(0, 0, randomAngle));
-        obstacle.transform.SetParent(centerPosition.transform);
 
+    
+    private void ObstaclePositionAndState()
+    {
+        obstacleRotation();
+        StartCoroutine(ActivateObstacle()); 
+    }
+
+    private void obstacleRotation()
+    {
+        centerPosition.transform.Rotate(new Vector3(0, 0, randomAngle));
         randomAngle = Random.Range(0, 360);
-    }*/
-    /*
+    }
+
     IEnumerator ActivateObstacle()
     {
-        obstaclePrefab.SetActive(true);
-        obstaclePrefab.GetComponent<Collider2D>().enabled = false;
-        obstaclePrefab.GetComponent<SpriteRenderer>().color = Color.green;
+        obstacle = Instantiate(obstaclePrefab, centerPosition.transform.position, centerPosition.transform.rotation); 
 
-        //ESPERAR
+        yield return new WaitForSeconds(3);
 
-        obstaclePrefab.GetComponent<Collider2D>().enabled = true;
-        obstaclePrefab.GetComponent<SpriteRenderer>().color = Color.red;
+        obstacle.GetComponent<Collider2D>().enabled = true;
+        obstacle.GetComponent<SpriteRenderer>().color = Color.red;
 
-        //EPERAR
+        yield return new WaitForSeconds(5);
 
-        obstaclePrefab.SetActive(false);
-    }*/
+        Destroy(obstacle);
+    } 
 }
 

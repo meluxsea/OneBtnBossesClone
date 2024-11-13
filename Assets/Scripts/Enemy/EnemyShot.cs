@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyShot : MonoBehaviour
+public class EnemyShot : MonoBehaviour, IEnemySkill
 {
     [SerializeField] Vector2[] bulletDirection;
-    [SerializeField] Transform[] bulletSpawn;
+    [SerializeField] Transform[] bulletSpawns;
     [SerializeField] EnemyBullet bulletPrefab;
-    private int randomNumber = -1;
+    private int shotNumber = -1;
 
-    [Header("TIME")]
+    /*[Header("TIME")]
     [SerializeField] float initialTime;
     [SerializeField] float shootCoolDown;
 
@@ -18,19 +18,28 @@ public class EnemyShot : MonoBehaviour
     void Start()
     {
         InvokeRepeating("ShootBullet", initialTime, shootCoolDown);
+    }*/
+
+    public void Skill()
+    {
+        //InvokeRepeating("ShootBullet", initialTime, shootCoolDown);
+        
+        ShootBullet(); //REALIZAR 4 REPETICIONES
     }
 
 
     private void ShootBullet()
     {
-        randomNumber++;
+        shotNumber++;
 
-        if (randomNumber < bulletSpawn.Length)
+        if (shotNumber < bulletSpawns.Length)
         {
-            EnemyBullet enemyBullet = Instantiate(bulletPrefab, bulletSpawn[randomNumber].position, bulletSpawn[randomNumber].rotation); 
-            enemyBullet.LaunchBullet(bulletDirection[randomNumber]);
+            EnemyBullet enemyBullet = Instantiate(bulletPrefab, bulletSpawns[shotNumber].position, bulletSpawns[shotNumber].rotation); 
+            enemyBullet.LaunchBullet(bulletDirection[shotNumber]);
         }
         else
-            randomNumber = -1;
+            shotNumber = -1;
     }
+
+    
 }

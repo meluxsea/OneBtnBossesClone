@@ -4,33 +4,29 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
+    [SerializeField] GameObject enemyObstacle;
+    [SerializeField] GameObject enemyShot;
+    [SerializeField] float cooldownSkill;
     private int randomNumber;
 
 
 
     private void Start()
     {
-        randomNumber = Random.Range(1, 3);
+        InvokeRepeating("SwitchSkills", 1, cooldownSkill);
     }
-
-    private void Update()
-    {
-        SwitchSkills(); //RUTINA
-    }
-
 
 
     private void SwitchSkills()
     {
-        switch(randomNumber)
+        randomNumber = Random.Range(1, 2);
+
+        switch (randomNumber)
         {
-            case 1:
-                break;
+            case 1:SearchSkillInterface(enemyShot);
+                break; 
 
-            case 2:
-                break;
-
-            case 3:
+            case 2: SearchSkillInterface(enemyObstacle);
                 break;
         }
         
@@ -40,7 +36,7 @@ public class EnemyAttack : MonoBehaviour
         //PARA EL ATAQUE DE BARRA USAR SCRIPT DE DISPARO
     }
 
-    private void SearchObjectInterface(GameObject attackType)
+    private void SearchSkillInterface(GameObject attackType)
     {
         attackType.GetComponent<IEnemySkill>().Skill();
     }

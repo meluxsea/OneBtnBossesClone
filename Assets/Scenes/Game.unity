@@ -3798,6 +3798,7 @@ GameObject:
   - component: {fileID: 1777893651}
   - component: {fileID: 1777893653}
   - component: {fileID: 1777893655}
+  - component: {fileID: 1777893659}
   - component: {fileID: 1777893656}
   - component: {fileID: 1777893658}
   m_Layer: 0
@@ -3956,7 +3957,11 @@ MonoBehaviour:
   - {x: -1, y: 0}
   - {x: 0, y: 1}
   - {x: 0, y: -1}
-  bulletSpawns: []
+  bulletSpawns:
+  - {fileID: 632475095}
+  - {fileID: 497806340}
+  - {fileID: 137493594}
+  - {fileID: 1093421029}
   bulletPrefab: {fileID: 5183644925841455421, guid: c6f1604296923264bac8bd9d3deca3f3, type: 3}
 --- !u!114 &1777893658
 MonoBehaviour:
@@ -3971,7 +3976,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centerPosition: {fileID: 917116027}
-  attacksPrefabs: []
+  attacksPrefabs:
+  - {fileID: 2977043831841690809, guid: 7984d2ca01711334cbf9b52f0c954de5, type: 3}
+  - {fileID: 5745407831744251976, guid: 29eca866218235f42b2e9e048e4331c4, type: 3}
+--- !u!114 &1777893659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777893650}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75a918d787c87e946b7155e3a0fd607b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyObstacle: {fileID: 1777893658}
+  enemyShot: {fileID: 1777893656}
+  cooldownSkill: 8
+  randomNumber: 1
 --- !u!1 &1784630408
 GameObject:
   m_ObjectHideFlags: 0

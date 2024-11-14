@@ -10,21 +10,11 @@ public class EnemyShot : MonoBehaviour, IEnemySkill
     [SerializeField] EnemyBullet bulletPrefab;
     private int shotNumber = -1;
 
-    /*[Header("TIME")]
-    [SerializeField] float initialTime;
-    [SerializeField] float shootCoolDown;
 
-
-    void Start()
-    {
-        InvokeRepeating("ShootBullet", initialTime, shootCoolDown);
-    }*/
 
     public void Skill()
     {
-        //InvokeRepeating("ShootBullet", initialTime, shootCoolDown);
-        
-        ShootBullet(); //REALIZAR 4 REPETICIONES
+        InvokeRepeating("ShootBullet", 1, 1);
     }
 
 
@@ -34,12 +24,10 @@ public class EnemyShot : MonoBehaviour, IEnemySkill
 
         if (shotNumber < bulletSpawns.Length)
         {
-            EnemyBullet enemyBullet = Instantiate(bulletPrefab, bulletSpawns[shotNumber].position, bulletSpawns[shotNumber].rotation); 
+            EnemyBullet enemyBullet = Instantiate(bulletPrefab, bulletSpawns[shotNumber].position, bulletSpawns[shotNumber].rotation);
             enemyBullet.LaunchBullet(bulletDirection[shotNumber]);
         }
         else
-            shotNumber = -1;
+            CancelInvoke("ShootBullet");
     }
-
-    
 }

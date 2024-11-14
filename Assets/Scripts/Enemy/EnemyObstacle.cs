@@ -11,27 +11,22 @@ public class EnemyObstacle : MonoBehaviour, IEnemySkill
     private int randomAngle;
     private int randomObstacleType;
 
-    /* [Header("COOLDOWN")]
-      [SerializeField] float invokeCooldown;
 
-
-
-      void Start()
-      {
-          InvokeRepeating("ObstaclePositionAndState", 1, invokeCooldown + 3+5);
-      }*/
 
     public void Skill()
     {
-        ObstaclePositionAndState();
+        d();
     }
 
+    private void Start()
+    {
+        InvokeRepeating("d", 1, 9);
+    }
 
-
-    private void ObstaclePositionAndState()
+    private void d ()
     {
         obstacleRotation();
-        StartCoroutine(ActivateRandomObstacle()); 
+        StartCoroutine(ActivateRandomObstacle());
     }
 
     private void obstacleRotation()
@@ -54,7 +49,5 @@ public class EnemyObstacle : MonoBehaviour, IEnemySkill
 
         Destroy(obstacle);
     }
-
-   
 }
 

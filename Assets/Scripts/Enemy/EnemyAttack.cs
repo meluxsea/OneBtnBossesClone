@@ -11,18 +11,17 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] int randomNumber = 1;
 
 
-    /*
+    
     private void Start()
     {
         InvokeRepeating("SwitchSkills", 1, cooldownSkill);
-    }*/
+    }
 
-/*
+
     private void SwitchSkills()
     {
-        Debug.Log("REPETICION");
-        randomNumber = Random.Range(1, 2);
-        
+        randomNumber = Random.Range(1, 3);
+
         switch (randomNumber)
         {
             case 1: enemyShot.GetComponent<IEnemySkill>().Skill();
@@ -31,5 +30,5 @@ public class EnemyAttack : MonoBehaviour
             case 2: enemyObstacle.GetComponent<IEnemySkill>().Skill();
                 break;
         }
-    }*/
+    }
 }

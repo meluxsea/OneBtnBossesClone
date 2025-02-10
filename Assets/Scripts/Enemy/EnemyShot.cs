@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyShot : MonoBehaviour, IEnemySkill
+public class EnemyShot : MonoBehaviour
 {
     [SerializeField] Vector2[] bulletDirection;
     [SerializeField] Transform[] bulletSpawns;
@@ -12,9 +12,9 @@ public class EnemyShot : MonoBehaviour, IEnemySkill
 
 
 
-    public void Skill()
+    public void Start()
     {
-        InvokeRepeating("ShootBullet", 1, 1);
+        InvokeRepeating("ShootBullet", 1, 5);
     }
 
 
@@ -28,6 +28,7 @@ public class EnemyShot : MonoBehaviour, IEnemySkill
             enemyBullet.LaunchBullet(bulletDirection[shotNumber]);
         }
         else
-            CancelInvoke("ShootBullet");
+            shotNumber = -1;
+            //CancelInvoke("ShootBullet");
     }
 }

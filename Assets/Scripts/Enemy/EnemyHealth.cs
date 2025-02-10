@@ -7,6 +7,6 @@ public class EnemyHealth : Health
     protected override void HealthIsZero()
     {
         Destroy(gameObject);
-        manager.Win();
+        GameManager.managerInstance.Win();
     }
 }

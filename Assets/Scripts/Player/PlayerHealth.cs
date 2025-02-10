@@ -8,7 +8,7 @@ public class PlayerHealth : Health
 {
     protected override void HealthIsZero()
     {
-        manager.activatePanel(manager.gameOverPanel);
+        GameManager.managerInstance.activatePanel(GameManager.managerInstance.gameOverPanel);
     }
 }
 

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SpeedPowerUp : MonoBehaviour
 {
-    [SerializeField][Range(0.001f, 0.004f)] float speedBoost;
+    [SerializeField][Range(0.0001f, 0.004f)] float speedBoost;
 
     [SerializeField] Slider powerUpLoad;
 

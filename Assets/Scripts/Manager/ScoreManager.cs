@@ -6,12 +6,29 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
+    public static ScoreManager instance { get; private set; }
+
     [Header("SCORE")]
     public GameManager manager;
 
     [Header("BEST SCORE")]
     [SerializeField] Text highScoreText;
     [SerializeField] GameObject bestTimePanel;
+
+
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+
 
 
     public void HighScoreUpdate()

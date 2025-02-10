@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyObstacle : MonoBehaviour, IEnemySkill
+public class EnemyObstacle : MonoBehaviour
 {
     [SerializeField] GameObject centerPosition;
     [SerializeField] GameObject[] attacksPrefabs;
@@ -13,21 +13,19 @@ public class EnemyObstacle : MonoBehaviour, IEnemySkill
 
 
 
-    public void Skill()
-    {
-        d();
-    }
-
     private void Start()
     {
-        InvokeRepeating("d", 1, 9);
+        InvokeRepeating("Skill", 1, 8);
     }
 
-    private void d ()
+    public void Skill()
     {
+        Debug.Log("SKILL");
         obstacleRotation();
         StartCoroutine(ActivateRandomObstacle());
     }
+
+
 
     private void obstacleRotation()
     {
@@ -37,17 +35,27 @@ public class EnemyObstacle : MonoBehaviour, IEnemySkill
 
     IEnumerator ActivateRandomObstacle()
     {
+        InstantiateRandomObstacle();
+        yield return new WaitForSeconds(3);
+        ActivateObstacleCollider();
+        yield return new WaitForSeconds(5);
+        Destroy(obstacle);
+    }
+
+  
+    private void ActivateObstacleCollider()
+    {
+        if (obstacle != null)
+        {
+            obstacle.GetComponent<Collider2D>().enabled = true;
+            obstacle.GetComponent<SpriteRenderer>().color = Color.red;
+        }
+    }
+
+    private void InstantiateRandomObstacle()
+    {
         obstacle = Instantiate(attacksPrefabs[randomObstacleType], centerPosition.transform.position, centerPosition.transform.rotation);
         randomObstacleType = Random.Range(0, attacksPrefabs.Length);
-
-        yield return new WaitForSeconds(3);
-
-        obstacle.GetComponent<Collider2D>().enabled = true;
-        obstacle.GetComponent<SpriteRenderer>().color = Color.red;
-
-        yield return new WaitForSeconds(5);
-
-        Destroy(obstacle);
     }
 }
 

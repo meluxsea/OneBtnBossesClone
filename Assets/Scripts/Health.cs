@@ -35,7 +35,7 @@ public abstract class Health : MonoBehaviour
         if (collision.gameObject.CompareTag(bulletTag) && canTakeDamage)
         {
             TakeDamage();
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
         }
     }
 }

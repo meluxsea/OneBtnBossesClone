@@ -7,6 +7,7 @@ public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] Transform bulletSpawn;
     [SerializeField] Transform enemy;
+    public ObjectPool objectPool;
 
     [SerializeField] protected GameObject bulletPrefab;
     [SerializeField] protected float shotCooldown;
@@ -20,6 +21,10 @@ public class PlayerAttack : MonoBehaviour
 
     private void ShotOneBullet()
     {
-        if (enemy != null) { Instantiate(bulletPrefab, bulletSpawn.position, transform.rotation); } 
+        if (enemy != null) 
+        {
+            GameObject bullet = objectPool.GetObject();
+            bullet.transform.position = bulletSpawn.position;
+        }
     }
 }

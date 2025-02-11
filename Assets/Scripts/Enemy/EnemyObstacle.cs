@@ -36,7 +36,8 @@ public class EnemyObstacle : MonoBehaviour, IEnemySkill
 
         yield return new WaitForSeconds(4);
 
-        Destroy(obstacle);
+        //Destroy(obstacle); //DESACTIVAR
+        obstacle.SetActive(false);
     }
 }
 

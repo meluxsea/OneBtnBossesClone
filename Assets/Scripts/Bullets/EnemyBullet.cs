@@ -10,6 +10,12 @@ public class EnemyBullet : MonoBehaviour
     public void LaunchBullet(Vector2 direction)
     {
         _rb.velocity = direction * bulletSpeed;
-        Destroy(gameObject, 3f);
+        StartCoroutine(DesactivateBullet());
     } 
+
+    IEnumerator DesactivateBullet()
+    {
+        yield return new WaitForSeconds(3);
+        gameObject.SetActive(false);
+    }
 }

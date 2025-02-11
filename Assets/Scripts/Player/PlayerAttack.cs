@@ -7,11 +7,13 @@ public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] Transform bulletSpawn;
     [SerializeField] Transform enemy;
-    public ObjectPool objectPool;
 
     [SerializeField] protected GameObject bulletPrefab;
     [SerializeField] protected float shotCooldown;
     [SerializeField] protected float shotInitialTime;
+
+    [Header("ObjectPool")]
+    public ObjectPool objectPool;
 
 
     private void Start()

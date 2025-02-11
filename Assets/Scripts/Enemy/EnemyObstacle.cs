@@ -8,14 +8,16 @@ public class EnemyObstacle : MonoBehaviour, IEnemySkill
     [SerializeField] GameObject centerPosition;
     [SerializeField] GameObject[] attacksPrefabs;
     private int randomAngle;
-    private int randomObstacleType;
+
+    [Header("ObjectPool")]
+    public ObjectPool objectPool;
 
 
 
     public void Skill()
     {
         obstacleRotation();
-        StartCoroutine(ActivateRandomObstacle());
+        StartCoroutine(ActivateObstacle());
     }
 
     private void obstacleRotation()
@@ -24,20 +26,27 @@ public class EnemyObstacle : MonoBehaviour, IEnemySkill
         centerPosition.transform.Rotate(new Vector3(0, 0, randomAngle));
     }
 
-    IEnumerator ActivateRandomObstacle()
+    IEnumerator ActivateObstacle()
     {
-        randomObstacleType = Random.Range(0, attacksPrefabs.Length);
-        GameObject obstacle = Instantiate(attacksPrefabs[randomObstacleType], centerPosition.transform.position, centerPosition.transform.rotation);
- 
+        GameObject obstacle = objectPool.GetObject();
+        obstacle.transform.position = centerPosition.transform.position;
+        obstacle.transform.rotation = centerPosition.transform.rotation;
+
+        ObstacleState(obstacle, false, Color.green);
+
         yield return new WaitForSeconds(2.5f);
 
-        obstacle.GetComponent<Collider2D>().enabled = true;
-        obstacle.GetComponent<SpriteRenderer>().color = Color.red;
+        ObstacleState(obstacle, true, Color.red);
 
         yield return new WaitForSeconds(4);
 
-        //Destroy(obstacle); //DESACTIVAR
         obstacle.SetActive(false);
+    }
+
+    private void ObstacleState(GameObject obstacle, bool colliderState, Color color)
+    {
+        obstacle.GetComponent<Collider2D>().enabled = colliderState;
+        obstacle.GetComponent<SpriteRenderer>().color = color;
     }
 }
 

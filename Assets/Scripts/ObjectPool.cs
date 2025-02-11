@@ -10,7 +10,9 @@ public class ObjectPool : MonoBehaviour
 
     [SerializeField] int amountToPool;
 
-    [SerializeField] GameObject objectPrefab;
+    [SerializeField] GameObject[] objectPrefabs;
+
+    int objectNumber = 0;
 
 
 
@@ -25,7 +27,12 @@ public class ObjectPool : MonoBehaviour
     {
         for (int i = 0; i < quantityToAdd; i++)
         {
-            GameObject obstacle = Instantiate(objectPrefab);
+            if (objectPrefabs.Length > 1)
+            {
+                objectNumber = Random.Range(0, objectPrefabs.Length);
+            }
+
+            GameObject obstacle = Instantiate(objectPrefabs[objectNumber]);
             obstacle.SetActive(false);
             pooledPrefabs.Add(obstacle);
 

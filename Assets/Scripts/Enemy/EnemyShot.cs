@@ -9,8 +9,10 @@ public class EnemyShot : MonoBehaviour, IEnemySkill
     [SerializeField] Vector2[] bulletDirection;
     [SerializeField] Transform[] bulletSpawns;
     [SerializeField] EnemyBullet bulletPrefab;
-    public ObjectPool objectPool;
     private int shotNumber = -1;
+
+    [Header("ObjectPool")]
+    public ObjectPool objectPool;
 
 
 

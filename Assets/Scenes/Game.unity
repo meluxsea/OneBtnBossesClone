@@ -2449,7 +2449,7 @@ MonoBehaviour:
   bulletSpawn: {fileID: 1094163334}
   enemy: {fileID: 1777893652}
   bulletPrefab: {fileID: 3746978449609212701, guid: ea52167a0bd2b654fb45b0b106eb05a6, type: 3}
-  shotCooldown: 1
+  shotCooldown: 0.5
   shotInitialTime: 1
   objectPool: {fileID: 1608547891}
 --- !u!58 &945070103
@@ -3272,7 +3272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledPrefabs: []
-  amountToPool: 2
+  amountToPool: 6
   objectPrefabs:
   - {fileID: 1006993714624107190, guid: c6f1604296923264bac8bd9d3deca3f3, type: 3}
 --- !u!1 &1499237104

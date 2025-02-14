@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Rubik-VariableFont_wght SDF
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: -903648419
   material: {fileID: 3548121743796237078}
-  materialHashCode: 0
+  materialHashCode: 74989149
   m_Version: 1.1.0
   m_SourceFontFileGUID: f5733a17cd44e3244adbc66981dc0d61
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: f5733a17cd44e3244adbc66981dc0d61, type: 3}
@@ -2746,9 +2746,9 @@ Material:
     - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 1
-    - _ScaleRatioB: 1
-    - _ScaleRatioC: 1
+    - _ScaleRatioA: 0.8333333
+    - _ScaleRatioB: 0.6770833
+    - _ScaleRatioC: 0.6770833
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class RecyclableObject : MonoBehaviour
 {
-    public abstract string attackName { get; }
+    public abstract string recyclableObjectName { get; }
 }

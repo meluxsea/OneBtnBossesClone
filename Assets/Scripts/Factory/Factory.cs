@@ -26,34 +26,35 @@ public class Factory: MonoBehaviour
         }
     }
 
-
     private void Start()
     {
+        CreateFactoryDictionary();
+    }
 
+
+
+    private void CreateFactoryDictionary()
+    {
         objectByName = new Dictionary<string, RecyclableObject>();
 
         foreach (var obj in recyclableObjects)
         {
-            objectByName.Add(obj.attackName, obj);
+            objectByName.Add(obj.recyclableObjectName, obj);
         }
     }
 
     public GameObject CreateRecyclableObject(string objectName, Transform objectTransform)
     {
-        Debug.Log("Objetos disponibles en Factory: " + string.Join(", ", objectByName.Keys));
-
-        if (objectByName.TryGetValue(objectName, out RecyclableObject attackPrefab))
+        if (objectByName.TryGetValue(objectName, out RecyclableObject objectPrefab))
         {
-            GameObject objectIntance = GameObject.Find(objectName + "Pool").GetComponent<ObjectPool>().GetObject(attackPrefab);
-
+            GameObject objectIntance = GameObject.Find(objectName + "Pool").GetComponent<ObjectPool>().GetObject(objectPrefab);
             objectIntance.transform.position = objectTransform.position;
             objectIntance.transform.rotation = objectTransform.rotation;
-
             return objectIntance;
         }
         else
         {
-            Debug.LogWarning($"El obstaculo o bala '{objectName}' no existe en la base de datos de ataques.");
+            Debug.LogWarning($"El obstaculo o bala '{objectName}' no existe en la base de datos de elementos reciclables.");
             return null;
         }
     }

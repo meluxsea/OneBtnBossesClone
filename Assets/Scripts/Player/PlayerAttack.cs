@@ -8,12 +8,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] Transform bulletSpawn;
     [SerializeField] Transform enemy;
 
-    [SerializeField] protected GameObject bulletPrefab;
     [SerializeField] protected float shotCooldown;
     [SerializeField] protected float shotInitialTime;
-
-    [Header("ObjectPool")]
-    public ObjectPool objectPool;
 
 
     private void Start()
@@ -26,8 +22,6 @@ public class PlayerAttack : MonoBehaviour
         if (enemy != null) 
         {
             Factory.instance.CreateRecyclableObject("PlayerBullet", bulletSpawn);
-            //GameObject bullet = objectPool.GetObject();
-            //bullet.transform.position = bulletSpawn.position;
         }
     }
 }

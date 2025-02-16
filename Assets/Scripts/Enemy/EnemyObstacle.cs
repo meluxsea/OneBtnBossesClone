@@ -6,12 +6,9 @@ using UnityEngine;
 public class EnemyObstacle : MonoBehaviour, IEnemySkill
 {
     [SerializeField] GameObject centerPosition;
+    private string obstacleName;
     private int randomNumber;
     private int randomAngle;
-
-
-    [Header("ObjectPool")]
-    public ObjectPool objectPool;
 
 
 
@@ -21,15 +18,11 @@ public class EnemyObstacle : MonoBehaviour, IEnemySkill
         StartCoroutine(ActivateObstacle());
     }
 
-    private void obstacleRotation()
-    {
-        randomAngle = Random.Range(0, 360);
-        centerPosition.transform.Rotate(new Vector3(0, 0, randomAngle));
-    }
-
+   
     IEnumerator ActivateObstacle()
     {
-        GameObject obstacle = Factory.instance.CreateRecyclableObject("EnemyObstacle", centerPosition.transform); //RANDOMIZAR OBSTACULOS
+        RandomObstacleName();
+        GameObject obstacle = Factory.instance.CreateRecyclableObject(obstacleName, centerPosition.transform);
         ObstacleState(obstacle, false, Color.green);
 
         yield return new WaitForSeconds(2.5f);
@@ -41,10 +34,32 @@ public class EnemyObstacle : MonoBehaviour, IEnemySkill
         obstacle.SetActive(false);
     }
 
+    private void obstacleRotation()
+    {
+        randomAngle = Random.Range(0, 360);
+        centerPosition.transform.Rotate(new Vector3(0, 0, randomAngle));
+    }
+
     private void ObstacleState(GameObject obstacle, bool colliderState, Color color)
     {
         obstacle.GetComponent<Collider2D>().enabled = colliderState;
         obstacle.GetComponent<SpriteRenderer>().color = color;
+    }
+
+    private void RandomObstacleName()
+    {
+        randomNumber = Random.Range(0, 2);
+
+        switch (randomNumber)
+        {
+            case 0:
+                obstacleName = "TriangleObstacle";
+                break;
+
+            case 1:
+                obstacleName = "RectangleObstacle";
+                break;
+        }
     }
 }
 

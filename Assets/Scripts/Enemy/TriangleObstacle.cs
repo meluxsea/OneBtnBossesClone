@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class TriangleObstacle : RecyclableObject
 {
-    public override string attackName => "EnemyObstacle";
+    public override string recyclableObjectName => "TriangleObstacle";
 }

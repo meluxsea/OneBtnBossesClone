@@ -5,12 +5,7 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     [Header("POOL OBJECT")]
-
     [SerializeField] private List<GameObject> pooledPrefabs;
-
-    [SerializeField] GameObject[] objectPrefabs;
-
-
 
 
     private void AddObjectToPool(int quantityToAdd, RecyclableObject prefab)

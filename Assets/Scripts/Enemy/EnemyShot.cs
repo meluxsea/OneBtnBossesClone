@@ -8,17 +8,14 @@ public class EnemyShot : MonoBehaviour, IEnemySkill
 {
     [SerializeField] Vector2[] bulletDirection;
     [SerializeField] Transform[] bulletSpawns;
-    [SerializeField] EnemyBullet bulletPrefab;
     private int shotNumber = -1;
-
-    [Header("ObjectPool")]
-    public ObjectPool objectPool;
 
 
     public void Skill()
     {
         InvokeRepeating("ShootBullet", 0, 1);
     }
+
 
     private void ShootBullet()
     {
@@ -27,11 +24,6 @@ public class EnemyShot : MonoBehaviour, IEnemySkill
         if (shotNumber < bulletSpawns.Length)
         {
             GameObject enemyBullet = Factory.instance.CreateRecyclableObject("EnemyBullet", bulletSpawns[shotNumber]);
-
-            //GameObject enemyBullet = objectPool.GetObject();
-            //enemyBullet.transform.position = bulletSpawns[shotNumber].position;
-            //enemyBullet.transform.rotation = bulletSpawns[shotNumber].rotation;
-
             enemyBullet.GetComponent<EnemyBullet>().LaunchBullet(bulletDirection[shotNumber]);
         }
         else

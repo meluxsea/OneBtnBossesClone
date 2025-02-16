@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayersBullet : RecyclableObject
 {
-    public override string attackName => "PlayerBullet";
+    public override string recyclableObjectName => "PlayerBullet";
     [SerializeField] float rotationSpeed;
     [SerializeField] float bulletSpeed;
     [SerializeField] Rigidbody2D _rb;

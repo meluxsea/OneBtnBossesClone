@@ -8,31 +8,16 @@ public class ObjectPool : MonoBehaviour
 
     [SerializeField] private List<GameObject> pooledPrefabs;
 
-    [SerializeField] int amountToPool;
-
     [SerializeField] GameObject[] objectPrefabs;
 
-    int objectNumber = 0;
 
 
 
-    void Start()
-    {
-        AddObjectToPool(amountToPool);
-    }
-
-
-
-    private void AddObjectToPool(int quantityToAdd)
+    private void AddObjectToPool(int quantityToAdd, RecyclableObject prefab)
     {
         for (int i = 0; i < quantityToAdd; i++)
         {
-            if (objectPrefabs.Length > 1)
-            {
-                objectNumber = Random.Range(0, objectPrefabs.Length);
-            }
-
-            GameObject obstacle = Instantiate(objectPrefabs[objectNumber]);
+            GameObject obstacle = Instantiate(prefab.gameObject);
             obstacle.SetActive(false);
             pooledPrefabs.Add(obstacle);
 
@@ -40,9 +25,9 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    public GameObject GetObject()
+    public GameObject GetObject(RecyclableObject prefab)
     {
-        for (int i = 0; i < amountToPool; i++)
+        for (int i = 0; i < pooledPrefabs.Count; i++)
         {
             if (!pooledPrefabs[i].activeSelf)
             {
@@ -53,7 +38,7 @@ public class ObjectPool : MonoBehaviour
                 }
             }
         }
-        AddObjectToPool(1);
+        AddObjectToPool(1, prefab);
         pooledPrefabs[pooledPrefabs.Count - 1].SetActive(true);
         return pooledPrefabs[pooledPrefabs.Count - 1];
     }

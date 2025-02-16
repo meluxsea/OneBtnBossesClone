@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayersBullet : MonoBehaviour
+public class PlayersBullet : RecyclableObject
 {
+    public override string attackName => "PlayerBullet";
     [SerializeField] float rotationSpeed;
     [SerializeField] float bulletSpeed;
     [SerializeField] Rigidbody2D _rb;

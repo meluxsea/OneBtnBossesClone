@@ -6,8 +6,9 @@ using UnityEngine;
 public class EnemyObstacle : MonoBehaviour, IEnemySkill
 {
     [SerializeField] GameObject centerPosition;
-    [SerializeField] GameObject[] attacksPrefabs;
+    private int randomNumber;
     private int randomAngle;
+
 
     [Header("ObjectPool")]
     public ObjectPool objectPool;
@@ -28,10 +29,7 @@ public class EnemyObstacle : MonoBehaviour, IEnemySkill
 
     IEnumerator ActivateObstacle()
     {
-        GameObject obstacle = objectPool.GetObject();
-        obstacle.transform.position = centerPosition.transform.position;
-        obstacle.transform.rotation = centerPosition.transform.rotation;
-
+        GameObject obstacle = Factory.instance.CreateRecyclableObject("EnemyObstacle", centerPosition.transform); //RANDOMIZAR OBSTACULOS
         ObstacleState(obstacle, false, Color.green);
 
         yield return new WaitForSeconds(2.5f);

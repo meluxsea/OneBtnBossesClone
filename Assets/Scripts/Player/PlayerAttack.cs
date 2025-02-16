@@ -25,8 +25,9 @@ public class PlayerAttack : MonoBehaviour
     {
         if (enemy != null) 
         {
-            GameObject bullet = objectPool.GetObject();
-            bullet.transform.position = bulletSpawn.position;
+            Factory.instance.CreateRecyclableObject("PlayerBullet", bulletSpawn);
+            //GameObject bullet = objectPool.GetObject();
+            //bullet.transform.position = bulletSpawn.position;
         }
     }
 }

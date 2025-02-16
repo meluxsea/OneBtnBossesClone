@@ -15,7 +15,6 @@ public class EnemyShot : MonoBehaviour, IEnemySkill
     public ObjectPool objectPool;
 
 
-
     public void Skill()
     {
         InvokeRepeating("ShootBullet", 0, 1);
@@ -27,9 +26,11 @@ public class EnemyShot : MonoBehaviour, IEnemySkill
 
         if (shotNumber < bulletSpawns.Length)
         {
-            GameObject enemyBullet = objectPool.GetObject();
-            enemyBullet.transform.position = bulletSpawns[shotNumber].position;
-            enemyBullet.transform.rotation = bulletSpawns[shotNumber].rotation;
+            GameObject enemyBullet = Factory.instance.CreateRecyclableObject("EnemyBullet", bulletSpawns[shotNumber]);
+
+            //GameObject enemyBullet = objectPool.GetObject();
+            //enemyBullet.transform.position = bulletSpawns[shotNumber].position;
+            //enemyBullet.transform.rotation = bulletSpawns[shotNumber].rotation;
 
             enemyBullet.GetComponent<EnemyBullet>().LaunchBullet(bulletDirection[shotNumber]);
         }

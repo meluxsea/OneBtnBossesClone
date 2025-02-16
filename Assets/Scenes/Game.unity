@@ -207,6 +207,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &115805004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 115805006}
+  - component: {fileID: 115805005}
+  m_Layer: 0
+  m_Name: FACTORY
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &115805005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115805004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09c8337d7644d2428aacee6a6f62618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recyclableObjects:
+  - {fileID: 5183644925841455421, guid: c6f1604296923264bac8bd9d3deca3f3, type: 3}
+  - {fileID: 222376425839717063, guid: ea52167a0bd2b654fb45b0b106eb05a6, type: 3}
+--- !u!4 &115805006
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115805004}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.3463851, y: -0.7189786, z: -0.013096478}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &120974592
 GameObject:
   m_ObjectHideFlags: 0
@@ -1733,7 +1780,7 @@ GameObject:
   m_Component:
   - component: {fileID: 784446256}
   m_Layer: 0
-  m_Name: ObjectPools
+  m_Name: OBJECT POOL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2289,7 +2336,7 @@ GameObject:
   - component: {fileID: 928501810}
   - component: {fileID: 928501809}
   m_Layer: 0
-  m_Name: ObstaclePool
+  m_Name: EnemyObstaclePool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2308,7 +2355,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledPrefabs: []
-  amountToPool: 2
   objectPrefabs:
   - {fileID: 2977043831841690809, guid: 7984d2ca01711334cbf9b52f0c954de5, type: 3}
   - {fileID: 5745407831744251976, guid: 29eca866218235f42b2e9e048e4331c4, type: 3}
@@ -2663,7 +2709,7 @@ GameObject:
   - component: {fileID: 985393743}
   - component: {fileID: 985393744}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: GAME MANAGER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3272,7 +3318,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledPrefabs: []
-  amountToPool: 6
   objectPrefabs:
   - {fileID: 1006993714624107190, guid: c6f1604296923264bac8bd9d3deca3f3, type: 3}
 --- !u!1 &1499237104
@@ -3454,7 +3499,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledPrefabs: []
-  amountToPool: 5
   objectPrefabs:
   - {fileID: 3746978449609212701, guid: ea52167a0bd2b654fb45b0b106eb05a6, type: 3}
 --- !u!1 &1624464794
@@ -4890,3 +4934,4 @@ SceneRoots:
   - {fileID: 4915113}
   - {fileID: 985393742}
   - {fileID: 784446256}
+  - {fileID: 115805006}

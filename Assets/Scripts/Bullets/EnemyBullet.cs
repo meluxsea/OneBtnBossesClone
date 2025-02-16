@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBullet : MonoBehaviour
+public class EnemyBullet : RecyclableObject
 {
+    public override string attackName => "EnemyBullet";
     [SerializeField] float bulletSpeed;
     [SerializeField] Rigidbody2D _rb;
+
 
     public void LaunchBullet(Vector2 direction)
     {

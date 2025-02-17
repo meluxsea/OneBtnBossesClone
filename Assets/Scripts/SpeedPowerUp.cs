@@ -11,9 +11,9 @@ public class SpeedPowerUp : MonoBehaviour
 
     private float normalSpeed;
 
-    private bool usingPowerUp;
+    public SpeedPowerUpController controller;
 
-
+    
 
     void Start()
     {
@@ -23,16 +23,18 @@ public class SpeedPowerUp : MonoBehaviour
 
     void Update()
     {
-      PowerUpEffect(); //USAR INPUT SYSTEM
+      PowerUpEffect();
     }
 
 
 
     public void PowerUpEffect()
     {
+        Debug.Log("Power Up");
+
         if (!GameManager.managerInstance.canChangeDirection)
         {
-            if (Input.GetKey(KeyCode.A))
+            if (controller.isUsingPowerUp)
             {
                 if (powerUpLoad.value > 0)
                 {

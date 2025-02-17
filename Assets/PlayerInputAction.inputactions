@@ -40,7 +40,7 @@
                     "name": "",
                     "id": "1dba286b-e7ab-491b-b2a1-44b0222e7c4d",
                     "path": "<Keyboard>/a",
-                    "interactions": "Hold(duration=1.401298E-45)",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "UseSpeedPowerUp",

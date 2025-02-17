@@ -2942,8 +2942,8 @@ GameObject:
   - component: {fileID: 945070099}
   - component: {fileID: 945070102}
   - component: {fileID: 945070104}
-  - component: {fileID: 945070106}
   - component: {fileID: 945070107}
+  - component: {fileID: 945070106}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3323,6 +3323,7 @@ GameObject:
   - component: {fileID: 985393741}
   - component: {fileID: 985393743}
   - component: {fileID: 985393744}
+  - component: {fileID: 985393745}
   m_Layer: 0
   m_Name: GAME MANAGER
   m_TagString: Untagged
@@ -3391,6 +3392,20 @@ MonoBehaviour:
   manager: {fileID: 985393741}
   highScoreText: {fileID: 120974593}
   bestTimePanel: {fileID: 1731371824}
+--- !u!114 &985393745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985393740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1cd44050105c6a47a33e55dfbfc7055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionReference: {fileID: 1588978887002525848, guid: 16b43b907df92fa45b58f38480c73e42, type: 3}
+  speedPowerUp: {fileID: 945070107}
 --- !u!1 &1021521338
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         circularMovement();
-        ChangeDirection();
     }
 
 
@@ -56,9 +55,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    private void ChangeDirection()
+    public void ChangeDirection()
     {
-        if (Input.GetKeyDown(KeyCode.A) && canChangeDirection)
+        if (canChangeDirection)
         {
             direction = !direction;
         }

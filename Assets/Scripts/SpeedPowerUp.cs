@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class SpeedPowerUp : MonoBehaviour
 {
-    [SerializeField][Range(0.0001f, 0.004f)] float speedBoost;
+    [SerializeField][Range(0.0001f, 0.004f)] float speedBoost = 0.0002f;
 
     [SerializeField] Slider powerUpLoad;
 
     private float normalSpeed;
+
+    private bool usingPowerUp;
 
 
 
@@ -26,9 +28,9 @@ public class SpeedPowerUp : MonoBehaviour
 
 
 
-    private void PowerUpEffect()
+    public void PowerUpEffect()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A)/*&& !canChangeDirection*/)// cuando toca el power up, la barra es de 100 y va bajando poco a poco y se deja de tener el efecto, vuelve arecargar al tocar el power up
         {
             if (powerUpLoad.value > 0)
             {

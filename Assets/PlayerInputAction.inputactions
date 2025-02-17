@@ -1,0 +1,54 @@
+{
+    "name": "PlayerInputAction",
+    "maps": [
+        {
+            "name": "PlayerMovement",
+            "id": "2c89f106-624d-4977-8d61-6cdbc1cccc72",
+            "actions": [
+                {
+                    "name": "ChangePlayerDirectiion",
+                    "type": "Button",
+                    "id": "0cf4e217-0140-4baf-9eb6-89fcb7cbd04f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UseSpeedPowerUp",
+                    "type": "Button",
+                    "id": "9318a092-adf0-4cf0-be8b-055bf6210473",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "06f5678f-6774-4826-b0c9-76c09a64620a",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangePlayerDirectiion",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1dba286b-e7ab-491b-b2a1-44b0222e7c4d",
+                    "path": "<Keyboard>/a",
+                    "interactions": "Hold(duration=1.401298E-45)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseSpeedPowerUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

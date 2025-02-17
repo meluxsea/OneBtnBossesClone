@@ -201,8 +201,8 @@ Transform:
   m_GameObject: {fileID: 4915111}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.35, y: -0.1, z: 0}
-  m_LocalScale: {x: 13.940655, y: 13.940655, z: 13.940655}
+  m_LocalPosition: {x: 0.35, y: -0.11, z: 0}
+  m_LocalScale: {x: 10.577308, y: 10.577308, z: 10.577308}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2387,7 +2387,8 @@ GameObject:
   - component: {fileID: 945070099}
   - component: {fileID: 945070102}
   - component: {fileID: 945070104}
-  - component: {fileID: 945070105}
+  - component: {fileID: 945070106}
+  - component: {fileID: 945070107}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2409,7 +2410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canChangeDirection: 0
   center: {fileID: 917116028}
-  radius: 7.19
+  radius: 5.2
   angle: 0
   speed: 0.001
 --- !u!212 &945070100
@@ -2473,7 +2474,7 @@ Transform:
   m_GameObject: {fileID: 945070098}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0025595585, y: 0.0028059138, z: 0.7387896, w: 0.67392546}
-  m_LocalPosition: {x: 7.23, y: -0.01, z: 0}
+  m_LocalPosition: {x: 5.64, y: -0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2546,7 +2547,69 @@ MonoBehaviour:
   bulletTag: EnemyAttack
   health: 3
   canTakeDamage: 0
---- !u!114 &945070105
+--- !u!114 &945070106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945070098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 16b43b907df92fa45b58f38480c73e42, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 945070099}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: ChangeDirection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0cf4e217-0140-4baf-9eb6-89fcb7cbd04f
+    m_ActionName: PlayerMovement/ChangePlayerDirectiion[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 945070107}
+        m_TargetAssemblyTypeName: SpeedPowerUp, Assembly-CSharp
+        m_MethodName: PowerUpEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9318a092-adf0-4cf0-be8b-055bf6210473
+    m_ActionName: PlayerMovement/UseSpeedPowerUp[/Keyboard/a]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: PlayerMovement
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &945070107
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

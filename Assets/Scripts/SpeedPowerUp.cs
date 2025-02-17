@@ -23,30 +23,36 @@ public class SpeedPowerUp : MonoBehaviour
 
     void Update()
     {
-      PowerUpEffect();
+      PowerUpEffect(); //USAR INPUT SYSTEM
     }
 
 
 
     public void PowerUpEffect()
     {
-        if (Input.GetKey(KeyCode.A)/*&& !canChangeDirection*/)// cuando toca el power up, la barra es de 100 y va bajando poco a poco y se deja de tener el efecto, vuelve arecargar al tocar el power up
+        if (!GameManager.managerInstance.canChangeDirection)
         {
-            if (powerUpLoad.value > 0)
+            if (Input.GetKey(KeyCode.A))
             {
-                PowerUpState(false, gameObject.GetComponent<PlayerMovement>().speed, speedBoost);
-                powerUpLoad.value -= Time.deltaTime * 100;
+                if (powerUpLoad.value > 0)
+                {
+                    PowerUpState(false, gameObject.GetComponent<PlayerMovement>().speed, speedBoost);
+                    powerUpLoad.value -= Time.deltaTime * 100;
+                }
+                else
+                {
+                    PowerUpState(true, normalSpeed, 0);
+                }
             }
             else
             {
                 PowerUpState(true, normalSpeed, 0);
+                powerUpLoad.value += Time.deltaTime * 100;
             }
         }
         else
-        {
-            PowerUpState(true, normalSpeed, 0);
-            powerUpLoad.value += Time.deltaTime * 100;
-        }
+            Debug.Log("Player can`t use Speed Power Up");
+
     }
 
 

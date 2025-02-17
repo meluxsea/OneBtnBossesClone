@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [HideInInspector] public bool canChangeDirection;
-
     [SerializeField] Transform center;
     [SerializeField] float radius;
     [SerializeField] float angle;
@@ -13,17 +11,6 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
 
 
-
-    private void Start()
-    {
-        if (GameObject.FindAnyObjectByType<SpeedPowerUp>() != null)
-        {
-            Debug.Log("Speed power up is ACTIVE. Player can´t change direction");
-            canChangeDirection = false;
-        }
-        else
-            canChangeDirection = true;
-    }
 
     void Update()
     {
@@ -57,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void ChangeDirection()
     {
-        if (canChangeDirection)
+        if (GameManager.managerInstance.canChangeDirection == true)
         {
             direction = !direction;
         }

@@ -9,10 +9,12 @@ public class GameManager : MonoBehaviour
     public static GameManager managerInstance { get; private set; }
 
     bool canChangeTime = true;
+    public bool canChangeDirection;
 
     [Header("PANELS")]
     [SerializeField] public GameObject gameOverPanel;
     [SerializeField] public GameObject victoryPanel;
+    [SerializeField] public GameObject powerUpPanel;
 
     [Header("TIME")]
     [SerializeField] GameObject informationPanel;
@@ -37,6 +39,9 @@ public class GameManager : MonoBehaviour
     {
         gameOverPanel.SetActive(false);
         victoryPanel.SetActive(false);
+
+        activatePanel(powerUpPanel);
+        Time.timeScale = 0;
     }
 
     void Update()
@@ -68,5 +73,12 @@ public class GameManager : MonoBehaviour
 
         textTime.text = "TIME                                          " + (time * 10).ToString("0");
         textTime.transform.SetParent(informationPanel.transform);
+    }
+
+    public void ChoosePowerUp(bool powerUpState)
+    {
+        canChangeDirection = powerUpState;
+        Time.timeScale = 1;
+        powerUpPanel.SetActive(false);
     }
 }

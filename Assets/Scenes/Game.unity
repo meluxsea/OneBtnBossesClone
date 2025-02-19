@@ -3177,6 +3177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedBoost: 0.0002
   powerUpLoad: {fileID: 1642783284}
+  controller: {fileID: 0}
 --- !u!1 &974488601
 GameObject:
   m_ObjectHideFlags: 0
@@ -3404,8 +3405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1cd44050105c6a47a33e55dfbfc7055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionReference: {fileID: 1588978887002525848, guid: 16b43b907df92fa45b58f38480c73e42, type: 3}
-  speedPowerUp: {fileID: 945070107}
+  isUsingPowerUp: 0
 --- !u!1 &1021521338
 GameObject:
   m_ObjectHideFlags: 0

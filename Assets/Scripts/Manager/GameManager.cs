@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
     {
         canChangeDirection = powerUpState;
         Time.timeScale = 1;
+        canChangeTime = true;
         powerUpPanel.SetActive(false);
     }
 }

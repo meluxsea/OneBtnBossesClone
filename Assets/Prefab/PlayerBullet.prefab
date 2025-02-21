@@ -172,5 +172,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 1000
-  bulletSpeed: 14
+  bulletSpeed: 17.4
   _rb: {fileID: 2831827299404929164}

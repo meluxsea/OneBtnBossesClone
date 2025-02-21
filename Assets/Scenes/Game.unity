@@ -4591,6 +4591,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centerPosition: {fileID: 917116027}
+  ActivationColor: {r: 0.8745099, g: 0.38823533, b: 0.37647063, a: 1}
+  DesactivationColor: {r: 0.10980393, g: 0.38431376, b: 0.37647063, a: 1}
 --- !u!4 &1157949198
 Transform:
   m_ObjectHideFlags: 0
@@ -6594,7 +6596,6 @@ MonoBehaviour:
   enemyObstacle: {fileID: 1157949197}
   enemyShot: {fileID: 1878270259}
   cooldownSkill: 4
-  randomNumber: 1
 --- !u!1 &1784630408
 GameObject:
   m_ObjectHideFlags: 0

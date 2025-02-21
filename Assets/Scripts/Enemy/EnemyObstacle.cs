@@ -6,7 +6,13 @@ using UnityEngine;
 public class EnemyObstacle : MonoBehaviour, IEnemySkill
 {
     private readonly string[] obstacleNames = { "TriangleObstacle", "RectangleObstacle" }; //Se añaden los nombres de los obstaculos disponibles
+
+    [Header("SCREEN CENTER")]
     [SerializeField] GameObject centerPosition;
+
+    [Header("COLORS")]
+    [SerializeField] Color ActivationColor;
+    [SerializeField] Color DesactivationColor;
 
 
 
@@ -22,10 +28,10 @@ public class EnemyObstacle : MonoBehaviour, IEnemySkill
         string obstacleName = GetRandomObstacleName();
         GameObject obstacle = Factory.instance.CreateRecyclableObject(obstacleName, centerPosition.transform);
 
-        SetObstacleState(obstacle, false, Color.green);
+        SetObstacleState(obstacle, false, DesactivationColor);
         yield return new WaitForSeconds(2.5f);
 
-        SetObstacleState(obstacle, true, Color.red);
+        SetObstacleState(obstacle, true, ActivationColor);
         yield return new WaitForSeconds(4);
 
         obstacle.SetActive(false);

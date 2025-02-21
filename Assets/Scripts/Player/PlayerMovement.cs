@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         transform.position = (new Vector3(x, y, z));
+        Rotation();
 
 
         switch (direction)
@@ -48,5 +49,13 @@ public class PlayerMovement : MonoBehaviour
         {
             direction = !direction;
         }
+    }
+
+    private void Rotation()
+    {
+        Vector3 look = transform.InverseTransformPoint(center.transform.position);
+        float angle = Mathf.Atan2(look.y, look.x) * Mathf.Rad2Deg - 90;
+
+        transform.Rotate(0, 0, angle);
     }
 }

@@ -14,7 +14,6 @@ public class SpeedPowerUpController : MonoBehaviour
     {
         inputAction = new PlayerInputAction();
 
-        //Sirve para asignar metodos a los eventos disponibles en elInput System
         inputAction.PlayerMovement.UseSpeedPowerUp.started += context => StartPowerUp();
         inputAction.PlayerMovement.UseSpeedPowerUp.canceled += context => CancelPowerUp();
 

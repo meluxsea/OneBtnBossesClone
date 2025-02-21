@@ -5,61 +5,46 @@ using UnityEngine;
 
 public class EnemyObstacle : MonoBehaviour, IEnemySkill
 {
+    private readonly string[] obstacleNames = { "TriangleObstacle", "RectangleObstacle" }; //Se añaden los nombres de los obstaculos disponibles
     [SerializeField] GameObject centerPosition;
-    private string obstacleName;
-    private int randomNumber;
-    private int randomAngle;
 
 
 
     public void Skill()
     {
-        obstacleRotation();
+        RotateObstacle();
         StartCoroutine(ActivateObstacle());
     }
 
    
     IEnumerator ActivateObstacle()
     {
-        RandomObstacleName();
+        string obstacleName = GetRandomObstacleName();
         GameObject obstacle = Factory.instance.CreateRecyclableObject(obstacleName, centerPosition.transform);
-        ObstacleState(obstacle, false, Color.green);
 
+        SetObstacleState(obstacle, false, Color.green);
         yield return new WaitForSeconds(2.5f);
 
-        ObstacleState(obstacle, true, Color.red);
-
+        SetObstacleState(obstacle, true, Color.red);
         yield return new WaitForSeconds(4);
 
         obstacle.SetActive(false);
     }
 
-    private void obstacleRotation()
+    private void RotateObstacle()
     {
-        randomAngle = Random.Range(0, 360);
-        centerPosition.transform.Rotate(new Vector3(0, 0, randomAngle));
+        centerPosition.transform.Rotate(new Vector3(0, 0, Random.Range(0, 360)));
     }
 
-    private void ObstacleState(GameObject obstacle, bool colliderState, Color color)
+    private void SetObstacleState(GameObject obstacle, bool colliderState, Color color)
     {
         obstacle.GetComponent<Collider2D>().enabled = colliderState;
         obstacle.GetComponent<SpriteRenderer>().color = color;
     }
 
-    private void RandomObstacleName()
+    private string GetRandomObstacleName()
     {
-        randomNumber = Random.Range(0, 2);
-
-        switch (randomNumber)
-        {
-            case 0:
-                obstacleName = "TriangleObstacle";
-                break;
-
-            case 1:
-                obstacleName = "RectangleObstacle";
-                break;
-        }
+        return obstacleNames[Random.Range(0, obstacleNames.Length)];
     }
 }
 

@@ -5,19 +5,24 @@ using UnityEngine.UI;
 
 public class SpeedPowerUp : MonoBehaviour
 {
-    [SerializeField][Range(0.0001f, 0.004f)] float speedBoost = 0.0002f;
-
+    [SerializeField][Range(0.0001f, 0.005f)] float speedBoost = 0.0002f;
     [SerializeField] Slider powerUpLoad;
 
     private float normalSpeed;
+    private PlayerHealth playerHealth;
+    private PlayerMovement playerMovement;
 
+    [Header("INPUT CONTROLLER")]
     public SpeedPowerUpController controller;
 
     
 
     void Start()
     {
-        normalSpeed = gameObject.GetComponent<PlayerMovement>().speed;
+        playerHealth = GetComponent<PlayerHealth>();
+        playerMovement = GetComponent<PlayerMovement>(); 
+
+        normalSpeed = playerMovement.speed;
         SetSliderValues();
     }
 
@@ -30,38 +35,35 @@ public class SpeedPowerUp : MonoBehaviour
 
     public void PowerUpEffect()
     {
-        Debug.Log("Power Up");
-
-        if (!GameManager.managerInstance.canChangeDirection)
+        if (GameManager.managerInstance.canChangeDirection) return;
+        
+        if (controller.isUsingPowerUp && powerUpLoad.value > 0)
         {
-            if (controller.isUsingPowerUp)
-            {
-                if (powerUpLoad.value > 0)
-                {
-                    PowerUpState(false, gameObject.GetComponent<PlayerMovement>().speed, speedBoost);
-                    powerUpLoad.value -= Time.deltaTime * 100;
-                }
-                else
-                {
-                    PowerUpState(true, normalSpeed, 0);
-                }
-            }
-            else
-            {
-                PowerUpState(true, normalSpeed, 0);
-                powerUpLoad.value += Time.deltaTime * 100;
-            }
+            ApplyPowerUp();
         }
         else
-            Debug.Log("Player can`t use Speed Power Up");
-
+        {
+            RechargePowerUpLoad();
+        }
     }
 
 
-    private void PowerUpState(bool playerCanTakeDamage, float speed, float aditionalSpeed)
+    private void SetPowerUpState(bool canTakeDamage, float newSpeed)
     {
-        gameObject.GetComponent<PlayerHealth>().canTakeDamage = playerCanTakeDamage;
-        gameObject.GetComponent<PlayerMovement>().speed = speed + aditionalSpeed;
+        playerHealth.canTakeDamage = canTakeDamage;
+        playerMovement.speed = newSpeed;
+    }
+
+    private void RechargePowerUpLoad()
+    {
+        SetPowerUpState(true, normalSpeed);
+        powerUpLoad.value += Time.deltaTime * 100;
+    }
+
+    private void ApplyPowerUp()
+    {
+        SetPowerUpState(false, playerMovement.speed + speedBoost);
+        powerUpLoad.value -= Time.deltaTime * 100;
     }
 
 

@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager managerInstance { get; private set; }
 
-    bool canChangeTime = true;
+    
     public bool canChangeDirection;
 
     [Header("PANELS")]
@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [Header("TIME")]
     [SerializeField] GameObject informationPanel;
     [SerializeField] Text textTime;
+    bool canChangeTime;
     public float time;
 
 
@@ -37,11 +38,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        gameOverPanel.SetActive(false);
-        victoryPanel.SetActive(false);
-
-        activatePanel(powerUpPanel);
-        Time.timeScale = 0;
+        ActivatePowerUpPanel();
     }
 
     void Update()
@@ -71,8 +68,18 @@ public class GameManager : MonoBehaviour
         activatePanel(victoryPanel);
         ScoreManager.instance.HighScoreUpdate();
 
-        textTime.text = "TIME                                          " + (time * 10).ToString("0");
+        textTime.text = "TIME                               " + (time * 10).ToString("0");
         textTime.transform.SetParent(informationPanel.transform);
+    }
+
+
+    private void ActivatePowerUpPanel()
+    {
+        gameOverPanel.SetActive(false);
+        victoryPanel.SetActive(false);
+
+        activatePanel(powerUpPanel);
+        Time.timeScale = 0;
     }
 
     public void ChoosePowerUp(bool powerUpState)

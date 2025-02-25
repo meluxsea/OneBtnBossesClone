@@ -8,9 +8,6 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance { get; private set; }
 
-    [Header("SCORE")]
-    public GameManager manager;
-
     [Header("BEST SCORE")]
     [SerializeField] Text highScoreText;
     [SerializeField] GameObject bestTimePanel;
@@ -35,16 +32,16 @@ public class ScoreManager : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("SavedHighScore"))
         {
-            if (manager.time * 10 < PlayerPrefs.GetFloat("SavedHighScore"))
+            if (GameManager.managerInstance.time * 10 < PlayerPrefs.GetFloat("SavedHighScore"))
             {
-                PlayerPrefs.SetFloat("SavedHighScore", manager.time * 10);
+                PlayerPrefs.SetFloat("SavedHighScore", GameManager.managerInstance.time * 10);
                 bestTimePanel.SetActive(true);
             }
 
         }
         else
         {
-            PlayerPrefs.SetFloat("SavedHighScore", manager.time * 10);
+            PlayerPrefs.SetFloat("SavedHighScore", GameManager.managerInstance.time * 10);
         }
 
         highScoreText.text = PlayerPrefs.GetFloat("SavedHighScore").ToString("0");
